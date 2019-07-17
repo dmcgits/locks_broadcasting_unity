@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class MoveButtonClick : MonoBehaviour {
 	public static event Action<string> OnMoveRequested = delegate {};
-	
-	public string wayToMove = "no_event";
 
-	private void OnMouseUpAsButton() {
-		Debug.Log("up!");
+  public static event Action<string, int> OnMoveDistanceRequested = delegate { };
+
+  public string wayToMove = "no_event";
+  public int distanceToMove = 1;
+
+  private void OnMouseUpAsButton() {
 		// generate an event using the eventToThrow string
 		OnMoveRequested(wayToMove);
-		
-	}
+
+    OnMoveDistanceRequested(wayToMove, distanceToMove);
+  }
 }
