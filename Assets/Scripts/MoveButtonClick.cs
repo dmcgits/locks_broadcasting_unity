@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveButtonClick : MonoBehaviour {
-	public static event Action<string> OnMoveRequested = delegate {};
+public class MoveButtonClick : MonoBehaviour
+{
 
-  public static event Action<string, int> OnMoveDistanceRequested = delegate { };
+	public static event Action<string> OnMoveRequested = delegate { };
 
-  public string wayToMove = "no_event";
-  public int distanceToMove = 1;
+	public static event Action<string, float> OnMoveDistanceRequested = delegate { };
+	
+	public string wayToMove = "no_event";
 
-  private void OnMouseUpAsButton() {
+	private void OnMouseUpAsButton()
+	{
 		// generate an event using the eventToThrow string
-		OnMoveRequested(wayToMove);
+		//OnMoveRequested(wayToMove);
 
-    OnMoveDistanceRequested(wayToMove, distanceToMove);
-  }
+		OnMoveDistanceRequested(wayToMove, 0.5f);
+	}
+
 }
